@@ -21,16 +21,13 @@ EXPOSE 993
 EXPOSE 995
 
 RUN apk update && \
-    apk add pwgen dovecot && \
+    apk add pwgen dovecot dovecot-pop3d && \
     mkdir -p /var/mail && \
     chown mail.mail /var/mail && \
     addgroup -g 65530 catchall && \
-    adduser -u 65530 -G catchall -D catchall && \
-    echo "ssl_protocols = TLSv1" >> /etc/dovecot/conf.d/10-ssl.conf && \
-    echo "mail_location = mbox:~/mail:INBOX=/var/mail/%u" >> /etc/dovecot/conf.d/10-mail.conf && \
-    echo "mail_privileged_group = mail" >> /etc/dovecot/conf.d/10-mail.conf && \
-    echo "log_path = /var/log/dovecot" >> /etc/dovecot/conf.d/10-logging.conf
+    adduser -u 65530 -G catchall -D catchall
 
-COPY entrypoint.sh /
+COPY entrypoint.sh /entrypoint.sh
+COPY local.conf /etc/dovecot/local.conf
 
 ENTRYPOINT [ "/entrypoint.sh" ]
