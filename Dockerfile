@@ -29,7 +29,7 @@ RUN apk update && \
     echo "ssl_protocols = TLSv1" >> /etc/dovecot/conf.d/10-ssl.conf && \
     echo "mail_location = mbox:~/mail:INBOX=/var/mail/%u" >> /etc/dovecot/conf.d/10-mail.conf && \
     echo "mail_privileged_group = mail" >> /etc/dovecot/conf.d/10-mail.conf && \
-    echo "log_path = /dev/stderr" >> /etc/dovecot/conf.d/10-logging.conf
+    echo "log_path = /var/log/dovecot" >> /etc/dovecot/conf.d/10-logging.conf
 
 COPY entrypoint.sh /
 
