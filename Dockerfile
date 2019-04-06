@@ -25,7 +25,7 @@ ADD ffdhe2048.pem /etc/ssl/ffdhe2048.pem
 ADD ffdhe4096.pem /etc/ssl/ffdhe4096.pem
 
 RUN apk update && \
-    apk add pwgen dovecot dovecot-pop3d && \
+    apk add tzdata pwgen dovecot dovecot-pop3d && \
     mkdir -p /var/mail && \
     chown mail.mail /var/mail && \
     addgroup -g 65530 catchall && \
