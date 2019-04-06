@@ -20,6 +20,10 @@ EXPOSE 993
 # Expose POPS
 EXPOSE 995
 
+# DHE Groups from https://wiki.mozilla.org/Security/Server_Side_TLS#Pre-defined_DHE_groups
+ADD ffdhe2048.pem /etc/ssl/ffdhe2048.pem
+ADD ffdhe4096.pem /etc/ssl/ffdhe4096.pem
+
 RUN apk update && \
     apk add pwgen dovecot dovecot-pop3d && \
     mkdir -p /var/mail && \
