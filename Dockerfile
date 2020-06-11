@@ -21,7 +21,8 @@ EXPOSE 993
 EXPOSE 995
 
 # DHE Groups from https://wiki.mozilla.org/Security/Server_Side_TLS#Pre-defined_DHE_groups
-ADD ffdhe2048.pem /etc/ssl/ffdhe2048.pem
+# https://github.com/internetstandards/dhe_groups
+ADD ffdhe3072.pem /etc/ssl/ffdhe3072.pem
 ADD ffdhe4096.pem /etc/ssl/ffdhe4096.pem
 
 RUN apk update && \
